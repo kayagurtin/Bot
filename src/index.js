@@ -1,4 +1,7 @@
 require('dotenv').config();
+// start webserver for keep-alive pings
+require('./webserver');
+
 const fs = require('fs');
 const path = require('path');
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
