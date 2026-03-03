@@ -56,36 +56,17 @@ node src/index.js
 
 You can add more commands by creating files under `src/commands`.
 
-### 💰 Economy system
-A basic coin economy has been added.  It stores balances in `src/data/economy.json` and provides a small utility module (`src/utils/economy.js`) to read/write values.  At the moment the following slash/prefix commands are available:
+### 🛠️ Removed economy system
+The previous coin-based economy commands have been removed from this bot.  If you want to add a custom currency later, you can reintroduce your own persistence layer and commands.
+
+The following informational commands have been added in their place:
 
 ```text
-/balance [user]      – show wallet and bank balances for yourself or another member
-/deposit <amt>        – move coins from wallet to bank
-/withdraw <amt>       – pull coins out of your bank
-/daily               – claim a fixed amount once every 24 hours
-/pay <user> <amount> – send coins to another member
-/givecoins <user> <amount> – (admin only) adjust a member's balance
-/beg                   – beg for coins once per hour (random small gain)
-/rob <user>            – attempt to rob another member (4‑hour cooldown; success/failure with risk; victims are DM‑notified)
-/work                  – earn coins by working (6‑hour cooldown)
-/gamble <amount>       – gamble coins with 50/50 win/lose
-/leaderboard           – view server top‑10 balances
-/resetcoins <user>     – set a user’s balance to zero (admin only)
-/takecoins <user> <amt>– remove coins from a user (admin only)/coinseveryone <amt>   – (admin only) add coins to every member at once```
-The shop now pulls its inventory from a shared file, making it easier to add or remove items (see `src/utils/store.js`). Currently only the Gold Rank is listed; the shop no longer displays role IDs for cleanliness.
-**New Member Welcome Bonus:**
-When a new member joins the server, they automatically receive **100 coins** as a starting balance to help them get started with the economy.
-Other economy commands have nicer embedded responses; they show balances, cooldowns, and confirmations more clearly.  Error messages such as insufficient funds or invalid arguments are now sent ephemerally so they don’t clutter the channel.
-
-The bot now includes a minimal store.  At the moment the only purchasable item is the **Gold rank** role (ID `1477942329351606305`) for **1 000 coins**.  Two new commands were added:
-
-```text
-/shop                 – list available items
-/buy <item>           – buy something (e.g. `/buy rank`)
+/ip    – show several server IP addresses
+/store – display the server store link
 ```
 
-The store is defined in `src/commands/buy.js` and can be extended with more goods or a proper database.
+(See `/announce` below for broadcast messages.)
 
 
 Additional moderation commands have been added, including:

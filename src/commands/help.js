@@ -2,17 +2,13 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 
 // command category mapping
 const CATEGORIES = {
-  money: {
-    label: '💰 Money',
-    commands: ['balance', 'deposit', 'withdraw', 'daily', 'pay', 'beg', 'rob', 'work', 'gamble', 'leaderboard', 'buy', 'shop', 'givecoins', 'takecoins', 'resetcoins', 'coinseveryone']
-  },
   moderation: {
     label: '⚔️ Moderation & Utilities',
     commands: ['ban', 'unban', 'kick', 'mute', 'unmute', 'timeout', 'warn', 'softban', 'temprole', 'lock', 'unlock', 'slowmode', 'clear', 'nickname', 'role', 'editrole', 'rolegive', 'roletake']
   },
   info: {
     label: 'ℹ️ Info & Settings',
-    commands: ['userinfo', 'serverinfo', 'help', 'ping', 'uptime', 'botstats', 'botstatus', 'setautorole', 'sticky', 'announce']
+    commands: ['userinfo', 'serverinfo', 'help', 'ping', 'uptime', 'botstats', 'botstatus', 'setautorole', 'sticky', 'announce', 'ip', 'store']
   }
 };
 
@@ -93,10 +89,6 @@ module.exports = {
       // Create category buttons
       const buttons = new ActionRowBuilder().addComponents(
         new ButtonBuilder()
-          .setCustomId('help_money')
-          .setLabel('💰 Money')
-          .setStyle(ButtonStyle.Primary),
-        new ButtonBuilder()
           .setCustomId('help_info')
           .setLabel('ℹ️ Info & Settings')
           .setStyle(ButtonStyle.Primary),
@@ -165,8 +157,7 @@ module.exports = {
         }
 
         let categoryKey = null;
-        if (interaction.customId === 'help_money') categoryKey = 'money';
-        else if (interaction.customId === 'help_info') categoryKey = 'info';
+        if (interaction.customId === 'help_info') categoryKey = 'info';
         else if (interaction.customId === 'help_moderation') categoryKey = 'moderation';
         else if (interaction.customId === 'help_back') {
           // Go back to overview

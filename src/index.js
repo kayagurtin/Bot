@@ -71,21 +71,13 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-// handle auto-role and give new members starting coins
+// handle auto-role for new members
 const { getGuildConfig, setGuildConfig } = require('./utils/config');
-const { addBalance } = require('./utils/economy');
 
 client.on('guildMemberAdd', async member => {
   const cfg = getGuildConfig(member.guild.id);
   if (cfg.autorole) {
     try { await member.roles.add(cfg.autorole); } catch {}
-  }
-  
-  // Give new members 100 starting coins
-  try {
-    addBalance(member.guild.id, member.id, 100);
-  } catch (err) {
-    console.error('Failed to add starting coins to new member:', err);
   }
 });
 
