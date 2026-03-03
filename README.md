@@ -34,6 +34,8 @@ Deploying to Render / Railway / similar
 - Ensure the bot has the Message Content Intent enabled in the Discord Developer Portal if you use `messageCreate` handling.
 - (Optional) set `DISCORD_CLIENT_ID` to your application ID so the bot automatically registers slash commands on startup. For rapid testing you can also set `GUILD_ID` to a guild where you have admin rights; commands will then install instantly to that server rather than globally (global commands take up to an hour to propagate).
 
+- **Keep‑alive server (for Replit / uptime services):** the bot now launches a tiny Express webserver on `process.env.PORT || 5000`; configure your hosting platform to expose port `5000` or use the provided `PORT` env var. You can ping the root URL (`/`) periodically to prevent the instance from sleeping.
+
 Commands
 
 The bot supports both slash commands and prefix (`!`) commands. Two examples are included:
